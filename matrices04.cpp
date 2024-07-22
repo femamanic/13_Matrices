@@ -1,11 +1,13 @@
 #include <iostream>
 using namespace std;
 
+string dias[7] = {"(L)", "(M)", "(M)", "(J)", "(V)", "(S)", "(D)"};
+
 int main () {
-    int vS[7][4], sS[4];
+    float vS[7][4], sS[4], sM = 0;
     for (int j = 0; j < 4; j++) {
         system ("cls");
-        int s = 0;
+        float s = 0;
         cout << "Ingrese las ventas de la semana " << (j + 1) << ":\n";
         for (int i = 0; i < 7; i++) {
             if (i == 0) {
@@ -32,11 +34,25 @@ int main () {
             s = s + vS[i][j];
         }
         sS[j] = s;
+        sM = sM + sS[j];
     }
     system ("cls");
-    for (int j = 0; j < 4; j++) {
-        cout << "La suma de las ventas de la semana " << (j + 1) << " es: " << sS[j] << "\n";
+    cout << "Ventas de cuatro semanas:\n";
+    cout << "------------------------------------------------------------\n";
+    cout << "Sem1\tSem2\tSem3\tSem4\t\n"; 
+    for (int i = 0; i < 7; i++) {
+        cout << dias[i] << "\t";
+        for (int j = 0; j < 4; j++) {
+            cout << vS[i][j] << "\t";
+        }
+        cout << "\n";
     }
+    cout << "------------------------------------------------------------\n";
+
+    for (int j = 0; j < 4; j++) {
+        cout << "   \t" << sS[j] << " ";
+    }
+    cout << "\nVenta total del mes: " << sM << "\n";
     system ("pause>nul");
     return 0;
 }
